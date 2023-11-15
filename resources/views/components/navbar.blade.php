@@ -8,13 +8,14 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="/">Home</a>
+                    <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('posts') ? 'active' : '' }}" href="/posts">Blog</a>
+                    <a class="nav-link {{ Request::segment(1) == 'posts' || Request::segment(1) == 'post' ? 'active' : '' }}"
+                        href="/posts">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('category') ? 'active' : '' }}" href="/categories">Kategori</a>
+                    <a class="nav-link {{ Request::is('categories') ? 'active' : '' }}" href="/categories">Kategori</a>
                 </li>
             </ul>
         </div>
