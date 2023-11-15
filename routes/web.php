@@ -25,7 +25,5 @@ Route::get("/about", function () {
 
 Route::get("/posts", [PostController::class, "index"]);
 Route::get("/post/{post:slug}", [PostController::class, "show"]);
-Route::get("/posts/author/{user:username}", [PostController::class, "postsByAuthor"]);
-Route::get("/posts/category/{category:slug}", [PostController::class, "postInCategory"]);
 
 Route::get("/categories", [CategoryController::class, "index"]);
