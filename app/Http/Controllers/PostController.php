@@ -9,14 +9,23 @@ use App\Models\User;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
+        $title = "";
+
+        if (request("category")) {
+            $category = Category::where("slug", request("category"))->get();
+            $title = " di  " . $category[0]->name;
+        }
+
+        if (request("author")) {
+            $author = User::where("username", request("author"))->get();
+            $title = " oleh " . $author[0]->name;
+        }
+
         return view("posts", [
-            "title" => "Semua Postingan",
-            "posts" => Post::latest()->get()
+            "title" => "Semua Postingan $title",
+            "posts" => Post::latest()->filter(request(["search", "category", "author"]))->paginate(7)->withQueryString()
         ]);
     }
 
@@ -24,22 +33,6 @@ class PostController extends Controller
     {
         return view("post", [
             "post" => $post
-        ]);
-    }
-
-    public function postsByAuthor(User $user)
-    {
-        return view("posts", [
-            "title" => "Postingan Dari $user->name",
-            "posts" => $user->post
-        ]);
-    }
-
-    public function postInCategory(Category $category)
-    {
-        return view("posts", [
-            "title" => "Postingan di Kategori $category->name",
-            "posts" => $category->post
         ]);
     }
 }

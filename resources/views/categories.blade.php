@@ -14,7 +14,7 @@
                             <h5 class="card-title">{{ $category->name }}</h5>
                             <p class="card-text">Ada {{ $category->post->count() }} Postingan</p>
 
-                            <a href="/posts/category/{{ $category->slug }}" class="btn btn-primary">Lihat Post</a>
+                            <a href="/posts?category={{ $category->slug }}" class="btn btn-primary">Lihat Post</a>
                         </div>
                     </div>
                 </div>
