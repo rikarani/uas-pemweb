@@ -11,8 +11,8 @@
 <body>
     @include('components.navbar')
 
-    <div class="container mt-3">
-        <h1 class="fs-4">Selamat Datang di Blog Sederhana ini, ini adalah projek UAS Mata Kuliah Pemograman Web</h1>
+    <div class="container mt-2">
+        @yield('content')
     </div>
 </body>
 
