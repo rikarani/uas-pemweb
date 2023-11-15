@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view("index");
 });
 
+Route::get("/about", function () {
+    return view("about");
+});
+
 Route::get("/posts", [PostController::class, "index"]);
 Route::get("/post/{post:slug}", [PostController::class, "show"]);
 Route::get("/posts/author/{user:username}", [PostController::class, "postsByAuthor"]);
