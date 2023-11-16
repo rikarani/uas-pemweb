@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-5">
             <main class="form-signin w-100 m-auto">
-                <h1 class="h3 mb-3 text-center">Login dulu woy</h1>
+                <h1 class="mb-3 mt-5 fs-2 text-center">Login dulu woy</h1>
 
                 @if (session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
