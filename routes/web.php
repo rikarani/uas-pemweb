@@ -19,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view("index");
+    return view("index", ["page" => "Home"]);
 });
 
 Route::get("/about", function () {
-    return view("about");
+    return view("about", ["page" => "About"]);
 });
 
 Route::get("/posts", [PostController::class, "index"]);
