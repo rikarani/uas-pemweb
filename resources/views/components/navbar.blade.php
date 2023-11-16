@@ -11,11 +11,17 @@
                     <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::segment(1) == 'posts' || Request::segment(1) == 'post' ? 'active' : '' }}"
+                    <a class="nav-link {{ Request::is('posts') || Request::segment(1) === 'post' ? 'active' : '' }}"
                         href="/posts">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('categories') ? 'active' : '' }}" href="/categories">Kategori</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="/login" class="nav-link {{ Request::is('login') ? 'active' : '' }}"><i
+                            class="bi bi-box-arrow-in-right"></i> Login</a>
                 </li>
             </ul>
         </div>
