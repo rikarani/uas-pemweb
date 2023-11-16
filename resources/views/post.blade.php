@@ -4,7 +4,7 @@
     <div>
         <div class="row justify-content-center mb-5">
             <div class="col-md-8">
-                <h1>{{ $post->title }}</h1>
+                <h1 class="mt-5">{{ $post->title }}</h1>
 
                 <p>By <a href="/posts?author={{ $post->author->username }}"
                         class="text-decoration-none">{{ $post->author->name }}</a> in <a
