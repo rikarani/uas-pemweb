@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 @section('content')
-    <h1 class="mb-3 text-center">{{ $title }}</h1>
+    <h1 class="mb-3 mt-5 text-center">{{ $title }}</h1>
 
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -15,7 +15,7 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Search" name="search"
                         value="{{ request('search') }}">
-                    <button class="btn btn-danger" type="submit">Search</button>
+                    <button class="btn btn-dark" type="submit">Search</button>
                 </div>
             </form>
         </div>
