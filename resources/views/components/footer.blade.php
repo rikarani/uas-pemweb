@@ -7,7 +7,7 @@
         </div>
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
             <li class="ms-3">
-                <a href="">
+                <a href="https://github.com/rikarani/uas-pemweb" target="_blank">
                     <i class="bi bi-github" style="font-size: 28px; color:black"></i>
                 </a>
             </li>
