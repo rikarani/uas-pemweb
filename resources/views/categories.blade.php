@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout.layout')
 
 @section('content')
     <h1 class="mb-3">{{ $title }}</h1>
@@ -21,4 +21,8 @@
             @endforeach
         </div>
     </div>
+@endsection
+
+@section('footer')
+    @include('components.footer')
 @endsection
