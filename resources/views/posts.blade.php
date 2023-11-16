@@ -1,9 +1,9 @@
-@extends('layout')
+@extends('layout.layout')
 
 @section('content')
     <h1 class="mb-3 text-center">{{ $title }}</h1>
 
-    <div class="row justify-content-center mb-3">
+    <div class="row justify-content-center">
         <div class="col-md-6">
             <form action="/posts">
                 @if (request('category'))
@@ -78,4 +78,9 @@
     {{-- Remaining Post --}}
 
     {{ $posts->links() }}
+
+@endsection
+
+@section('footer')
+    @include('components.footer')
 @endsection

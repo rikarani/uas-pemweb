@@ -24,7 +24,7 @@ class UserFactory extends Factory
             "name" => fake()->name(),
             "username" => fake()->unique()->userName(),
             "email" => fake()->unique()->freeEmail(),
-            "password" => bcrypt("rahasia")
+            "password" => Hash::make("rahasia"),
         ];
     }
 

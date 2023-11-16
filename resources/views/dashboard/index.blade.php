@@ -1,5 +1,5 @@
 @extends('layout.layout')
 
 @section('content')
-    <h1>Ini Adalah About</h1>
+    <h1>Halo, {{ auth()->user()->name }}</h1>
 @endsection
