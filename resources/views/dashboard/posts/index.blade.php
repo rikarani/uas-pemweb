@@ -1,11 +1,12 @@
 @extends('dashboard.layout.layout')
 
-@section('content')
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Ini halaman dashboard post</h1>
-    </div>
+@section('header')
+    <h1 class="h2">Ini halaman dashboard post</h1>
+@endsection
 
+@section('content')
     <div class="table-responsive small col-lg-9">
+        <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Tambah Post Baru</a>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
