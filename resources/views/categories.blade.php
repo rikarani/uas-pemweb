@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 @section('content')
-    <h1 class="mb-3">{{ $title }}</h1>
+    <h1 class="mb-3 mt-5">{{ $title }}</h1>
 
     <div>
         <div class="row">

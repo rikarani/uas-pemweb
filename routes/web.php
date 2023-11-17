@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DashboardController;
+use App\Models\Category;
+use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
@@ -19,17 +19,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view("index");
+    return view("index", ["page" => "Home"]);
 });
 
 Route::get("/about", function () {
-    return view("about");
+    return view("about", ["page" => "About"]);
 });
 
 Route::get("/posts", [PostController::class, "index"]);
-Route::get("/post/{post:slug}", [PostController::class, "show"]);
+Route::get("/post/{post}", [PostController::class, "show"]);
 
-Route::get("/categories", [CategoryController::class, "index"]);
+Route::get("/categories", function () {
+    return view("categories", [
+        "page" => "Kategori",
+        "title" => "Kategori Postingan",
+        "categories" => Category::all()
+    ]);
+});
 
 Route::get("/register", [RegisterController::class, "index"])->middleware("guest");
 Route::post("/register", [RegisterController::class, "store"]);
@@ -38,4 +44,8 @@ Route::get("/login", [LoginController::class, "index"])->middleware("guest")->na
 Route::post("/login", [LoginController::class, "authenticate"]);
 Route::post("/logout", [LoginController::class, "logout"]);
 
-Route::get("/dashboard", [DashboardController::class, "index"])->middleware("auth");
+Route::middleware("auth")->get("/dashboard", function () {
+    return view("dashboard.index", ["page" => "Dashboard"]);
+});
+
+Route::resource("/dashboard/posts", DashboardPostController::class)->middleware("auth");

@@ -11,7 +11,6 @@ class Category extends Model
     use HasFactory;
 
     protected $guarded = ["id"];
-    // protected $with = ["post"];
 
     public function post(): HasMany
     {
