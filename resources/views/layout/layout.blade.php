@@ -4,9 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog Sederhana @isset($page)
-            - {{ $page }}
-        @endisset
+    <title>
+        @isset($page)
+            {{ $page }} -
+        @endisset Blog Sederhana
     </title>
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 
@@ -29,7 +30,6 @@
     </main>
 
     @include('components.footer')
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
