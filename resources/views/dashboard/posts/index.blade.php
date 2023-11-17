@@ -1,11 +1,12 @@
 @extends('dashboard.layout.layout')
+
 @section('content')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Ini halaman dashboard post</h1>
     </div>
 
-    <div class="table-responsive small col-lg-8">
-        <table class="table table-striped table-sm">
+    <div class="table-responsive small col-lg-9">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>
