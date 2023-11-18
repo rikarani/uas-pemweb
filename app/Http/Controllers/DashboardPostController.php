@@ -6,6 +6,9 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 
 class DashboardPostController extends Controller
@@ -13,7 +16,7 @@ class DashboardPostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         return view("dashboard.posts.index", [
             "page" => "Dashboard",
@@ -24,7 +27,7 @@ class DashboardPostController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         return view("dashboard.posts.create", [
             "page" => "Tambah Post Baru",
@@ -35,7 +38,7 @@ class DashboardPostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
             "title" => ["required", "max:255"],
@@ -54,7 +57,7 @@ class DashboardPostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(Post $post): View
     {
         return view("dashboard.posts.show", [
             "post" => $post
@@ -64,28 +67,53 @@ class DashboardPostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit(Post $post): View
     {
-        //
+        return view("dashboard.posts.edit", [
+            "page" => "Edit Post",
+            "categories" => Category::all(),
+            "post" => $post
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Post $post): RedirectResponse
     {
-        //
+        // * Bikin Rules
+        $rules = [
+            "title" => ["required", "max:255"],
+            "category_id" => ["required"],
+            "body" => ["required"]
+        ];
+
+        // * Kalau slugnya berubah
+        if ($request->slug != $post->slug) {
+            $rules["slug"] = ["required", "unique:posts,slug"];
+        }
+
+        // * Validasi
+        $validatedData = $request->validate($rules);
+
+        $validatedData["user_id"] = auth()->user()->id;
+        $validatedData["excerpt"] = Str::limit(strip_tags($request->body), 70);
+
+        Post::where("id", $post->id)->update($validatedData);
+        return redirect("/dashboard/posts")->with("success", "Post Berhasil Diedit");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post): RedirectResponse
     {
-        //
+        Post::destroy($post->id);
+
+        return redirect("/dashboard/posts")->with("success", "Post Berhasil Dihapus");
     }
 
-    public function generateSlug(Request $request)
+    public function generateSlug(Request $request): JsonResponse
     {
         $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
 
