@@ -10,11 +10,16 @@
     <div>
         <div class="row my-3">
             <div class="col-lg-8">
-
                 <a href="/dashboard/posts" class="btn btn-success"><i class="bi bi-arrow-left"></i> Kembali ke Postingan
                     Saya</a>
-                <a href="" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Edit Postingan</a>
-                <a href="" class="btn btn-danger"><i class="bi bi-x-circle"></i> Hapus Postingan</a>
+                <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning"><i class="bi bi-pencil-square"></i>
+                    Edit Post</a>
+                <form action="/dashboard/posts/{{ $post->slug }}" method="POST" class="d-inline">
+                    @method('delete')
+                    @csrf
+                    <button class="btn btn-danger" onclick="return confirm('Yakin Ingin Menghapus Postingan?')"><i
+                            class="bi bi-x-circle"></i> Hapus Post</button>
+                </form>
 
                 <img src="https://source.unsplash.com/1200x400?{{ $post->category->slug }}" alt=""
                     class="img-fluid mt-3">
