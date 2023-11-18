@@ -1,8 +1,10 @@
 @extends('layout.layout')
 
-@section('content')
-    <h1 class="mb-3 mt-5 text-center">{{ $title }}</h1>
+@section('title')
+    {{ $title }}
+@endsection
 
+@section('content')
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form action="/posts">
@@ -73,7 +75,7 @@
             </div>
         </div>
     @else
-        <p class="text-center fs-4">No Post Found</p>
+        <p class="text-center fs-3 fw-medium">Tidak Ada Post</p>
     @endif
     {{-- Remaining Post --}}
 
