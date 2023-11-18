@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Str;
 
 class DashboardPostController extends Controller
 {
@@ -23,7 +26,10 @@ class DashboardPostController extends Controller
      */
     public function create()
     {
-        //
+        return view("dashboard.posts.create", [
+            "page" => "Tambah Post Baru",
+            "categories" => Category::all()
+        ]);
     }
 
     /**
@@ -31,7 +37,18 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            "title" => ["required", "max:255"],
+            // "slug" => ["required", "unique:posts,slug"], // * Dijadiin Komentar karna slugnya auto generated
+            "category_id" => ["required"],
+            "body" => ["required"]
+        ]);
+
+        $validatedData["user_id"] = auth()->user()->id;
+        $validatedData["excerpt"] = Str::limit(strip_tags($request->body), 70);
+
+        Post::create($validatedData);
+        return redirect("/dashboard/posts")->with("success", "Post Berhasil Ditambahkan");
     }
 
     /**
@@ -66,5 +83,12 @@ class DashboardPostController extends Controller
     public function destroy(Post $post)
     {
         //
+    }
+
+    public function generateSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
+
+        return response()->json(["slug" => $slug]);
     }
 }

@@ -1,10 +1,15 @@
 @extends('dashboard.layout.layout')
 
+@section('header')
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">{{ $post->title }}</h1>
+    </div>
+@endsection
+
 @section('content')
     <div>
         <div class="row my-3">
             <div class="col-lg-8">
-                <h1 class="mb-3">{{ $post->title }}</h1>
 
                 <a href="/dashboard/posts" class="btn btn-success"><i class="bi bi-arrow-left"></i> Kembali ke Postingan
                     Saya</a>
@@ -17,8 +22,6 @@
                 <article class="my-3">
                     {!! $post->body !!}
                 </article>
-
-                <a href="/posts" class="text-decoration-none">Kembali Ke Halaman Blog</a>
             </div>
         </div>
     </div>

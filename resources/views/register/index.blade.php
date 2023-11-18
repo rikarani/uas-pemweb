@@ -1,11 +1,13 @@
 @extends('layout.layout')
 
+@section('title')
+    <h1 class="mb-3 fs-2 text-center">Daftar dulu woy</h1>
+@endsection
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-5">
             <main class="form-registration w-100 m-auto">
-                <h1 class="mb-3 mt-5 fs-2 text-center">Daftar dulu woy</h1>
-
                 <form action="/register" method="POST">
                     @csrf
                     <div class="form-floating">

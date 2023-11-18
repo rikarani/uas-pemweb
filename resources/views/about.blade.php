@@ -1,5 +1,11 @@
 @extends('layout.layout')
 
+@section('title')
+    <h1>Ini Adalah About</h1>
+@endsection
+
 @section('content')
-    <h1 class="mt-5">Ini Adalah About</h1>
+    <div>
+        <p>enaknye diisi apelah ni??</p>
+    </div>
 @endsection
