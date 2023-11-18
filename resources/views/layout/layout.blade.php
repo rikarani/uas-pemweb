@@ -25,6 +25,10 @@
 
     <main class="flex-shrink-0">
         <div class="container">
+            <h1 class="mb-3 text-center" style="margin-top: 2.2rem">
+                @yield('title')
+            </h1>
+
             @yield('content')
         </div>
     </main>
