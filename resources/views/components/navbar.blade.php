@@ -10,7 +10,7 @@
                     <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('posts') || Request::segment(1) === 'post' ? 'active' : '' }}"
+                    <a class="nav-link {{ Request::is('posts') || Request::is('post/*') ? 'active' : '' }}"
                         href="/posts">Blog</a>
                 </li>
                 <li class="nav-item">
