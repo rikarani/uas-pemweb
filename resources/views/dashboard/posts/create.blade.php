@@ -70,7 +70,7 @@
         const slugField = document.getElementById("slug");
 
         titleField.addEventListener("change", () => {
-            fetch(`/dashboard/posts/generateSlug?title=${titleField.value}`)
+            fetch(`/dashboard/posts/generate?title=${titleField.value}`)
                 .then((response) => response.json())
                 .then((data) => slugField.value = data.slug);
         });
