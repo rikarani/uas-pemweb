@@ -43,6 +43,7 @@ class DashboardPostController extends Controller
     {
         $validatedData = $request->validate([
             "title" => ["required", "max:255"],
+            "category_id" => ["required"],
             "image" => ["image", "file", "max:2048"],
             "body" => ["required"]
         ]);
@@ -88,6 +89,7 @@ class DashboardPostController extends Controller
         // * Bikin Rules
         $rules = [
             "title" => ["required", "max:255"],
+            "category_id" => ["required"],
             "image" => ["image", "file", "max:2048"],
             "body" => ["required"]
         ];
