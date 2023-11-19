@@ -43,9 +43,10 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Gambar <span style="font-size: 11px">Opsional</span></label>
+                <label for="image" class="form-label">Gambar <span style="font-size: 11px">(Opsional)</span></label>
+                <img id="preview" class="img-fluid d-block mb-3 col-lg-8">
                 <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
-                    name="image">
+                    name="image" onchange="previewImage()">
                 @error('image')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -77,5 +78,15 @@
         document.addEventListener("trix-file-accept", (e) => {
             e.preventDefault();
         })
+
+        function previewImage() {
+            const inputImage = document.getElementById("image");
+            const previewImage = document.getElementById("preview")
+
+            const [file] = inputImage.files;
+            if (file) {
+                previewImage.src = URL.createObjectURL(file);
+            }
+        }
     </script>
 @endsection
