@@ -14,27 +14,30 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex gap-2 {{ Request::is('dashboard/*') ? '' : 'text-dark' }}"
+                    <a class="nav-link d-flex gap-2 {{ Request::is('dashboard/posts') ? '' : 'text-dark' }}"
                         href="/dashboard/posts">
                         <i class="bi bi-file-text"></i> Postingan Saya
                     </a>
                 </li>
             </ul>
 
-            <h6
-                class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-                <span>bagian atmin</span>
-                <a class="link-secondary" href="#" aria-label="Add a new report">
-                    <i class="bi bi-plus-circle"></i>
-                </a>
-            </h6>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link d-flex gap-2 text-dark" href="/posts">
-                        <i class="bi bi-pin-angle"></i> Kategori
+            @can('admin')
+                <h6
+                    class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+                    <span>bagian atmin</span>
+                    <a class="link-secondary" href="#" aria-label="Add a new report">
+                        <i class="bi bi-plus-circle"></i>
                     </a>
-                </li>
-            </ul>
+                </h6>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link d-flex gap-2 {{ Request::is('dashboard/categories') ? '' : 'text-dark' }}"
+                            href="/dashboard/categories">
+                            <i class="bi bi-pin-angle"></i> Kategori
+                        </a>
+                    </li>
+                </ul>
+            @endcan
 
             <hr class="my-3">
 
