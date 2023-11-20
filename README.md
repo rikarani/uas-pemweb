@@ -13,6 +13,10 @@ bikin Blog Sederhana
 - Bootstrap
 - Laravel
 
+## Pre-requisite
+
+Udah Install [Composer](https://getcomposer.org/) dan [Node.JS](https://nodejs.org/en)
+
 # Ritual
 
 1. clone repo
@@ -67,4 +71,26 @@ php artisan serve
 
 ```
 npm run dev
+```
+
+# Environment Variables
+
+buka file `.env`
+
+cari baris ini dan sesuaikan dengan konfigurasi database
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+
+dan tambahkan ini di baris paling terakhir
+
+```
+FAKER_LOCALE=id_ID
+FILESYSTEM_DISK=public
 ```
