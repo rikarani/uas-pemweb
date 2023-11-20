@@ -130,7 +130,7 @@ class DashboardPostController extends Controller
         return redirect("/dashboard/posts")->with("success", "Post Berhasil Dihapus");
     }
 
-    public function generateSlug(Request $request): JsonResponse
+    public function generate(Request $request): JsonResponse
     {
         $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
 
