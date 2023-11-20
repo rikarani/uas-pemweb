@@ -50,9 +50,8 @@ Route::middleware("auth")->get("/dashboard", function () {
     return view("dashboard.index", ["page" => "Dashboard"]);
 });
 
-// * Route Helper buat generate slug
-Route::get("/dashboard/posts/generate", [HelperController::class, "post"]);
-Route::get("/dashboard/categories/generate", [HelperController::class, "category"]);
-
+Route::get("/dashboard/posts/generate", [DashboardPostController::class, "generate"]);
 Route::resource("/dashboard/posts", DashboardPostController::class)->middleware("auth");
+
+Route::get("/dashboard/categories/generate", [AdminCategoryController::class, "generate"]);
 Route::resource("/dashboard/categories", AdminCategoryController::class)->except("show")->middleware("admin");

@@ -23,7 +23,7 @@
             <div class="mb-3">
                 <label for="slug" class="form-label">Slug <span style="font-size: 11px">(Auto Generated)</span></label>
                 <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
-                    value="{{ old('slug') }}" readonly required />
+                    value="{{ old('slug') }}" readonly />
                 @error('slug')
                     <div class="invalid-feedback">
                         {{ $message }}
