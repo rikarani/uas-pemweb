@@ -17,10 +17,11 @@ class DatabaseSeeder extends Seeder
             "name" => "Phasya Ananta",
             "username" => "erikaaaa",
             "email" => "phasya@gmail.com",
-            "password" => Hash::make("rahasia")
+            "password" => Hash::make("rahasia"),
+            "is_admin" => 1
         ]);
 
-        $this->call(CategorySeeder::class);
+        $this->call([CategorySeeder::class, UserSeeder::class]);
         // $this->call([PostSeeder::class, CategorySeeder::class, UserSeeder::class]);
     }
 }

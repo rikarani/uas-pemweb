@@ -2,12 +2,12 @@
 
 @section('header')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Ini halaman dashboard post</h1>
+        <h1 class="h2">Postingan Saya</h1>
     </div>
 @endsection
 
 @section('content')
-    <div class="col-lg-10">
+    <div class="col-lg-8">
         <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Tambah Post Baru</a>
 
         @if (session()->has('success'))
@@ -18,7 +18,7 @@
         @endif
     </div>
 
-    <div class="table-responsive small col-lg-10">
+    <div class="table-responsive small col-lg-8">
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -34,7 +34,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->category->name }}</td>
-                        <td>
+                        <td class="d-flex gap-2">
                             <a href="/dashboard/posts/{{ $post->slug }}" class="btn btn-info"><i
                                     class="bi bi-eye"></i></a>
                             <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning"><i

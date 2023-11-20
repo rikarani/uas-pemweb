@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
 use App\Models\Category;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\HelperController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,5 +50,9 @@ Route::middleware("auth")->get("/dashboard", function () {
     return view("dashboard.index", ["page" => "Dashboard"]);
 });
 
-Route::get("/dashboard/posts/generateSlug", [DashboardPostController::class, "generateSlug"])->middleware("auth");
+// * Route Helper buat generate slug
+Route::get("/dashboard/posts/generate", [HelperController::class, "post"]);
+Route::get("/dashboard/categories/generate", [HelperController::class, "category"]);
+
 Route::resource("/dashboard/posts", DashboardPostController::class)->middleware("auth");
+Route::resource("/dashboard/categories", AdminCategoryController::class)->except("show")->middleware("admin");
