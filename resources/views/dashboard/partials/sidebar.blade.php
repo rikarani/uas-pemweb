@@ -14,7 +14,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex gap-2 {{ Request::is('dashboard/posts') ? '' : 'text-dark' }}"
+                    <a class="nav-link d-flex gap-2 {{ Request::is('dashboard/posts*') ? '' : 'text-dark' }}"
                         href="/dashboard/posts">
                         <i class="bi bi-file-text"></i> Postingan Saya
                     </a>
@@ -31,7 +31,13 @@
                 </h6>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link d-flex gap-2 {{ Request::is('dashboard/categories') ? '' : 'text-dark' }}"
+                        <a class="nav-link d-flex gap-2 {{ Request::is('dashboard/users*') ? '' : 'text-dark' }}"
+                            href="/dashboard/users">
+                            <i class="bi bi-person-circle"></i> User
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex gap-2 {{ Request::is('dashboard/categories*') ? '' : 'text-dark' }}"
                             href="/dashboard/categories">
                             <i class="bi bi-pin-angle"></i> Kategori
                         </a>
