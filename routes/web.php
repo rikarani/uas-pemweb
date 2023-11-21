@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminUserController;
 use App\Models\Category;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\LoginController;
@@ -55,3 +56,5 @@ Route::resource("/dashboard/posts", DashboardPostController::class)->middleware(
 
 Route::get("/dashboard/categories/generate", [AdminCategoryController::class, "generate"]);
 Route::resource("/dashboard/categories", AdminCategoryController::class)->except("show")->middleware("admin");
+
+Route::resource("/dashboard/users", AdminUserController::class)->except("show")->middleware("admin");
