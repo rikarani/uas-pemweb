@@ -94,3 +94,28 @@ dan tambahkan ini di baris paling terakhir
 FAKER_LOCALE=id_ID
 FILESYSTEM_DISK=public
 ```
+
+
+# Contributing
+
+Contributions are always welcome!
+
+1. bikin branch baru
+```
+git checkout -b <nama_branch>
+```
+
+2. ngoding lah
+
+3. kalo udah, commit
+```
+git add <nama_file>
+git commit -m <commit_message>
+```
+
+4. trus push
+```
+git push origin <nama_branch>
+```
+
+
