@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form action="/repo" class="mt-3">
+    <form action="/course" class="mt-3">
         <div class="col-lg-3 d-flex align-items-center gap-2">
             <label>Semester</label>
             <select name="semester" class="form-select">
@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $lesson->name }}</h5>
                             <p class="card-text">{{ $lesson->description }}</p>
-                            <a href="/repo/{{ $lesson->slug }}" class="btn btn-primary">Lihat Materi</a>
+                            <a href="/course/{{ $lesson->slug }}" class="btn btn-primary">Lihat Materi</a>
                         </div>
                     </div>
                 </div>
