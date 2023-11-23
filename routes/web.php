@@ -2,12 +2,13 @@
 
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\DashboardMateriController;
 use App\Models\Category;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\HelperController;
+use App\Http\Controllers\RepoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,3 +59,8 @@ Route::get("/dashboard/categories/generate", [AdminCategoryController::class, "g
 Route::resource("/dashboard/categories", AdminCategoryController::class)->except("show")->middleware("admin");
 
 Route::resource("/dashboard/users", AdminUserController::class)->except("show")->middleware("admin");
+
+Route::get("/repo", [RepoController::class, "index"]);
+Route::get("/repo/{course}", [RepoController::class, "show"]);
+
+Route::resource("/dashboard/materi", DashboardMateriController::class);
