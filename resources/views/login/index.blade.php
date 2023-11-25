@@ -46,8 +46,6 @@
 
                     <button class="btn btn-primary w-100 py-2" type="submit">Login</button>
                 </form>
-
-                <small class="d-block text-center mt-3">Blom Punya Akun? <a href="/register">gas daftar!!!!</a></small>
             </main>
         </div>
     </div>
