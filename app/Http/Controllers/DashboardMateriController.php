@@ -11,8 +11,9 @@ class DashboardMateriController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        dd($request->all());
         return view("dashboard.lesson.index", [
             "page" => "Materi",
             "lessons" => Lesson::all()->sortBy("course_id")
