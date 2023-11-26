@@ -22,7 +22,7 @@ Udah Install [Composer](https://getcomposer.org/) dan [Node.JS](https://nodejs.o
 1. clone repo
 
 ```
-git clone https://github.com/rikarani/belajar-laravel
+git clone https://github.com/rikarani/uas-pemweb
 ```
 
 <br>
