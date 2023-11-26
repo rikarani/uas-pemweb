@@ -10,11 +10,7 @@
                     <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="/about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('posts') || Request::is('post/*') ? 'active' : '' }}"
-                        href="/posts">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('categories') ? 'active' : '' }}" href="/categories">Kategori</a>
+                    <a class="nav-link {{ Request::is('course*') ? 'active' : '' }}" href="/course">Repository</a>
                 </li>
             </ul>
 

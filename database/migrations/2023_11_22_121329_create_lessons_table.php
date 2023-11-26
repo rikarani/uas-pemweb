@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("category_id");
-            $table->foreignId("user_id");
-            $table->string("title");
-            $table->string("slug")->unique();
-            $table->string("excerpt");
-            $table->text("body");
-            $table->string("image")->nullable();
+            $table->foreignId("course_id");
+            $table->string("name");
+            $table->string("description");
             $table->timestamps();
         });
     }
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('lessons');
     }
 };

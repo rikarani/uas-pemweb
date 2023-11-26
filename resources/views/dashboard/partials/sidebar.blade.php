@@ -3,20 +3,14 @@
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link d-flex gap-2 text-dark" href="/posts">
-                        <i class="bi bi-house-fill"></i> Blog
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex gap-2 {{ Request::is('dashboard') ? '' : 'text-dark' }}"
-                        href="/dashboard">
+                    <a class="nav-link d-flex gap-2 {{ Request::is('dashboard') ? '' : 'text-dark' }}" href="/dashboard">
                         <i class="bi bi-graph-down"></i> Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex gap-2 {{ Request::is('dashboard/posts*') ? '' : 'text-dark' }}"
-                        href="/dashboard/posts">
-                        <i class="bi bi-file-text"></i> Postingan Saya
+                    <a class="nav-link d-flex gap-2 {{ Request::is('dashboard/materi*') ? '' : 'text-dark' }}"
+                        href="/dashboard/materi">
+                        <i class="bi bi-pin-angle"></i> Materi
                     </a>
                 </li>
             </ul>
@@ -34,12 +28,6 @@
                         <a class="nav-link d-flex gap-2 {{ Request::is('dashboard/users*') ? '' : 'text-dark' }}"
                             href="/dashboard/users">
                             <i class="bi bi-person-circle"></i> User
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link d-flex gap-2 {{ Request::is('dashboard/categories*') ? '' : 'text-dark' }}"
-                            href="/dashboard/categories">
-                            <i class="bi bi-pin-angle"></i> Kategori
                         </a>
                     </li>
                 </ul>
