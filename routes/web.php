@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCourseController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DashboardMateriController;
 use App\Http\Controllers\LoginController;
@@ -40,3 +41,6 @@ Route::middleware("auth")->get("/dashboard", function () {
 
 Route::resource("/dashboard/users", AdminUserController::class)->except("show")->middleware("admin");
 Route::resource("/dashboard/materi", DashboardMateriController::class)->except("show");
+
+Route::get("/dashboard/course/generate", [AdminCourseController::class, "generate"]);
+Route::resource("/dashboard/course", AdminCourseController::class)->except("show")->middleware("admin");
