@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 @section('title')
-    <h1 class="mb-3 fs-2 text-center">Login dulu woy</h1>
+    <h1 class="mb-3 fs-2 text-center">Login dulu</h1>
 @endsection
 
 
