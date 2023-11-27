@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="col-lg-6">
+    <div class="col-lg-8">
         <a href="/dashboard/materi/create" class="btn btn-primary mb-3">Tambah Materi Baru</a>
 
         @if (session()->has('success'))
@@ -16,6 +16,18 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+    </div>
+
+    <div class="mb-3">
+        <form action="/dashboard/materi" class="d-flex col-lg-4 gap-3">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+            <button class="btn btn-primary" type="submit">Lihat</button>
+        </form>
     </div>
 
     <div class="table-responsive small col-lg-8">
