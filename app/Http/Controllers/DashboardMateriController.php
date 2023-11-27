@@ -18,7 +18,7 @@ class DashboardMateriController extends Controller
         return view("dashboard.lesson.index", [
             "page" => "Materi",
             "courses" => Course::all()->groupBy("semester"),
-            "lessons" => Lesson::all()->sortBy("course_id")
+            "lessons" => Lesson::filter(request("course"))->get()
         ]);
     }
 
