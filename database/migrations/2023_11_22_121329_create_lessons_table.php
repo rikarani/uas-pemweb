@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId("course_id");
             $table->string("name");
             $table->string("description");
-            $table->string("materi")->nullable();
+            $table->string("materi");
             $table->timestamps();
         });
     }
