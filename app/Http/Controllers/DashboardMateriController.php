@@ -5,17 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Lesson;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules\File;
 
 class DashboardMateriController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        dd($request->all());
         return view("dashboard.lesson.index", [
             "page" => "Materi",
+            "courses" => Course::all()->groupBy("semester"),
             "lessons" => Lesson::all()->sortBy("course_id")
         ]);
     }
@@ -37,10 +39,15 @@ class DashboardMateriController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            "course_id" => "required",
             "name" => "required|max:255",
             "description" => "required|max:255",
-            "course_id" => "required"
+            "materi" => ["required", File::types(["pdf", "doc", "docx", "ppt", "pptx", "zip"])->max("5mb")]
         ]);
+
+        if ($request->file("materi")) {
+            $validatedData["materi"] = $request->file("materi")->store("materi");
+        }
 
         Lesson::create($validatedData);
         return redirect("/dashboard/materi")->with("success", "Berhasil Menambahkan Materi");
@@ -69,9 +76,24 @@ class DashboardMateriController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Lesson $lesson)
+    public function update(Request $request, Lesson $materi)
     {
-        //
+        $rules = [
+            "course_id" => "required",
+            "name" => "required|max:255",
+            "description" => "required|max:255",
+            "materi" => File::types(["pdf", "doc", "docx", "ppt", "pptx", "zip"])->max("5mb")
+        ];
+
+        $validatedData = $request->validate($rules);
+        if ($request->file("materi")) {
+            Storage::delete($materi->materi);
+
+            $validatedData["materi"] = $request->file("materi")->store("materi");
+        }
+
+        Lesson::where("id", $materi->id)->update($validatedData);
+        return redirect("/dashboard/materi")->with("success", "Berhasil Memperbarui Materi");
     }
 
     /**
@@ -79,6 +101,7 @@ class DashboardMateriController extends Controller
      */
     public function destroy(Lesson $materi)
     {
+        Storage::delete($materi->materi);
         Lesson::destroy($materi->id);
         return redirect("/dashboard/materi")->with("success", "Berhasil Menghapus Materi");
     }
