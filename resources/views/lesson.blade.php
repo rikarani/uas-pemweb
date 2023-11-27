@@ -5,22 +5,6 @@
 @endsection
 
 @section('content')
-    <form action="/repo" class="mt-3">
-        <div class="col-lg-3 d-flex align-items-center gap-2">
-            <label>Semester</label>
-            <select name="semester" class="form-select">
-                @for ($i = 1; $i <= 8; $i++)
-                    @if (request('semester') == $i)
-                        <option value="{{ $i }}" selected>{{ $i }}</option>
-                    @else
-                        <option value="{{ $i }}">{{ $i }}</option>
-                    @endif
-                @endfor
-            </select>
-            <button type="submit" class="btn btn-primary">Lihat</button>
-        </div>
-    </form>
-
     <div class="mt-3">
         <div class="row row-gap-3">
             @foreach ($course->lesson as $lesson)
