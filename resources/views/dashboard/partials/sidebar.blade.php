@@ -27,7 +27,13 @@
                     <li class="nav-item">
                         <a class="nav-link d-flex gap-2 {{ Request::is('dashboard/users*') ? '' : 'text-dark' }}"
                             href="/dashboard/users">
-                            <i class="bi bi-person-circle"></i> User
+                            <i class="bi bi-person-circle"></i> Manage User
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex gap-2 {{ Request::is('dashboard/course*') ? '' : 'text-dark' }}"
+                            href="/dashboard/course">
+                            <i class="bi bi-journals"></i> Mata Kuliah
                         </a>
                     </li>
                 </ul>
