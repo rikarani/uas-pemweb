@@ -27,8 +27,7 @@
             @foreach ($lessons as $lesson)
                 <div class="col-md-3">
                     <div class="card" style="width: 18rem;">
-                        <img src="{{ asset('storage/post-images/ex.jpg') }}" style="max-height: 150px" class="card-img-top"
-                            alt="...">
+                        <img src="{{ asset('img/ex.jpg') }}" style="max-height: 150px" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $lesson->name }}</h5>
                             <p class="card-text">{{ $lesson->description }}</p>
