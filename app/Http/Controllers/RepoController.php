@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RepoController extends Controller
 {
@@ -21,5 +23,12 @@ class RepoController extends Controller
             "page" => $course->name,
             "course" => $course
         ]);
+    }
+
+    public function download(Lesson $lesson)
+    {
+        $ext = pathinfo($lesson->materi, PATHINFO_EXTENSION);
+
+        return Storage::download($lesson->materi, "$lesson->name.$ext");
     }
 }

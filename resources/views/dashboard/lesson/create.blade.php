@@ -8,12 +8,12 @@
 
 @section('content')
     <div class="col-lg-6">
-        <form action="/dashboard/materi" method="POST" class="mb-5">
+        <form action="/dashboard/materi" method="POST" class="mb-5" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Judul</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
-                    value="{{ old('name') }}" required autofocus />
+                    value="{{ old('name') }}" autofocus />
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -23,7 +23,7 @@
             <div class="mb-3">
                 <label for="description" class="form-label">Deskripsi</label>
                 <input type="text" class="form-control @error('description') is-invalid @enderror" id="description"
-                    name="description" value="{{ old('description') }}" required />
+                    name="description" value="{{ old('description') }}" />
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -37,7 +37,7 @@
                     @foreach ($courses as $group => $course)
                         <optgroup label="Semester {{ $group }}">
                             @foreach ($course as $c)
-                                @if (request('course_id') == $c->id)
+                                @if (old('course_id') == $c->id)
                                     <option value="{{ $c->id }}" selected>{{ $c->name }}</option>
                                 @else
                                     <option value="{{ $c->id }}">{{ $c->name }}</option>
@@ -46,6 +46,16 @@
                         </optgroup>
                     @endforeach
                 </select>
+            </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Kasih File laa</label>
+                <input class="form-control @error('attachment') is-invalid @enderror" type="file" id="formFile"
+                    name="materi">
+                @error('materi')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Tambah Materi</button>
         </form>

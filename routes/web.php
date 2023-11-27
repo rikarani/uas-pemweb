@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCourseController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DashboardMateriController;
 use App\Http\Controllers\LoginController;
@@ -30,13 +31,16 @@ Route::get("/login", [LoginController::class, "index"])->middleware("guest")->na
 Route::post("/login", [LoginController::class, "authenticate"]);
 Route::post("/logout", [LoginController::class, "logout"]);
 
+Route::get("/course/{lesson}/download", [RepoController::class, "download"]);
+Route::get("/course", [RepoController::class, "index"]);
+Route::get("/course/{course}", [RepoController::class, "show"]);
+
 Route::middleware("auth")->get("/dashboard", function () {
     return view("dashboard.index", ["page" => "Dashboard"]);
 });
 
 Route::resource("/dashboard/users", AdminUserController::class)->except("show")->middleware("admin");
+Route::resource("/dashboard/materi", DashboardMateriController::class)->except("show");
 
-Route::get("/course", [RepoController::class, "index"]);
-Route::get("/course/{course}", [RepoController::class, "show"]);
-
-Route::resource("/dashboard/materi", DashboardMateriController::class);
+Route::get("/dashboard/course/generate", [AdminCourseController::class, "generate"]);
+Route::resource("/dashboard/course", AdminCourseController::class)->except("show")->middleware("admin");

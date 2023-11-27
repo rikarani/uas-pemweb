@@ -20,11 +20,19 @@
 
     <div class="mb-3">
         <form action="/dashboard/materi" class="d-flex col-lg-4 gap-3">
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <select class="form-select" name="course">
+                <option selected disabled>---</option>
+                @foreach ($courses as $group => $course)
+                    <optgroup label="Semester {{ $group }}">
+                        @foreach ($course as $c)
+                            @if (request('course') == $c->slug)
+                                <option value="{{ $c->slug }}" selected>{{ $c->name }}</option>
+                            @else
+                                <option value="{{ $c->slug }}">{{ $c->name }}</option>
+                            @endif
+                        @endforeach
+                    </optgroup>
+                @endforeach
             </select>
             <button class="btn btn-primary" type="submit">Lihat</button>
         </form>
