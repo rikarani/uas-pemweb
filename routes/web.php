@@ -30,13 +30,13 @@ Route::get("/login", [LoginController::class, "index"])->middleware("guest")->na
 Route::post("/login", [LoginController::class, "authenticate"]);
 Route::post("/logout", [LoginController::class, "logout"]);
 
+Route::get("/course/{lesson}/download", [RepoController::class, "download"]);
+Route::get("/course", [RepoController::class, "index"]);
+Route::get("/course/{course}", [RepoController::class, "show"]);
+
 Route::middleware("auth")->get("/dashboard", function () {
     return view("dashboard.index", ["page" => "Dashboard"]);
 });
 
 Route::resource("/dashboard/users", AdminUserController::class)->except("show")->middleware("admin");
-
-Route::get("/course", [RepoController::class, "index"]);
-Route::get("/course/{course}", [RepoController::class, "show"]);
-
-Route::resource("/dashboard/materi", DashboardMateriController::class);
+Route::resource("/dashboard/materi", DashboardMateriController::class)->except("show");
